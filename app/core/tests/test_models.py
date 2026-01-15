@@ -6,19 +6,19 @@ from django.contrib.auth import get_user_model
 
 
 class ModelTests(TestCase):
-    """Test models. """
+    """Test models."""
 
     def test_create_user_email_sucessful(self):
-        """Teste creating user e-mail is sucessful. """
-        email = 'test@exemple.com.br'
-        password = 'TestPass123'
+        """Teste creating user e-mail is sucessful."""
+        email = 'test@exemple.com'
+        password = 'testpass123'
         user = get_user_model().objects.create_user(
             email=email,
             password=password,
         )
 
         self.assertEqual(user.email, email)
-        self.assertTrue(user.check_password, password)
+        self.assertTrue(user.check_password(password))
 
     def test_new_user_email_normalized(self):
         """Test email is normalized for new users."""
